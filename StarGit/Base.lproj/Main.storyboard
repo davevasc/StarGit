@@ -25,10 +25,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SwiftBeta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-KN-bDQ">
-                                <rect key="frame" x="104.5" y="333" width="205" height="44"/>
+                                <rect key="frame" x="143" y="333" width="128.5" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="oj0-cd-EKO"/>
-                                    <constraint firstAttribute="width" constant="205" id="q8S-bH-0yJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>

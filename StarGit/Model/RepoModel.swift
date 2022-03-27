@@ -12,9 +12,9 @@ struct RepoModel: Codable {
     var name: String
     var fullName: String
     var repoURL: String
-    var language: String
+    var language: String?
     var description: String?
-    var owner: UserModel
+    //var owner: UserModel?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -22,7 +22,16 @@ struct RepoModel: Codable {
         case repoURL = "html_url"
         case language
         case description
-        case owner
+        //case owner
+    }
+    
+    init(name: String, fullName: String, repoURL: String) {
+        self.name = name
+        self.fullName = fullName
+        self.repoURL = repoURL
+        self.language = nil
+        self.description = nil
+        //        self.owner = nil
     }
     
 }
