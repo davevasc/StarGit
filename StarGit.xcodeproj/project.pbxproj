@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B071826027F0C98800C9BCE7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071825F27F0C98800C9BCE7 /* UserModel.swift */; };
+		B071826227F0CD5B00C9BCE7 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071826127F0CD5B00C9BCE7 /* RepoModel.swift */; };
+		B071826427F0D00E00C9BCE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071826327F0D00E00C9BCE7 /* Constants.swift */; };
+		B071826627F0D13B00C9BCE7 /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071826527F0D13B00C9BCE7 /* GitService.swift */; };
 		B086C5E927EFE913003F94DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5E827EFE913003F94DE /* AppDelegate.swift */; };
 		B086C5EB27EFE913003F94DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5EA27EFE913003F94DE /* SceneDelegate.swift */; };
 		B086C5ED27EFE913003F94DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5EC27EFE913003F94DE /* ViewController.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B071825F27F0C98800C9BCE7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B071826127F0CD5B00C9BCE7 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
+		B071826327F0D00E00C9BCE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B071826527F0D13B00C9BCE7 /* GitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitService.swift; sourceTree = "<group>"; };
 		B086C5E527EFE913003F94DE /* StarGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B086C5E827EFE913003F94DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B086C5EA27EFE913003F94DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +84,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B071825A27F0C17500C9BCE7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B071826327F0D00E00C9BCE7 /* Constants.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B071825B27F0C17E00C9BCE7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B071825C27F0C18400C9BCE7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B071825D27F0C19000C9BCE7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B071826527F0D13B00C9BCE7 /* GitService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		B071825E27F0C1A900C9BCE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B071825F27F0C98800C9BCE7 /* UserModel.swift */,
+				B071826127F0CD5B00C9BCE7 /* RepoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B086C5DC27EFE913003F94DE = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +146,11 @@
 		B086C5E727EFE913003F94DE /* StarGit */ = {
 			isa = PBXGroup;
 			children = (
+				B071825A27F0C17500C9BCE7 /* Base */,
+				B071825E27F0C1A900C9BCE7 /* Model */,
+				B071825B27F0C17E00C9BCE7 /* View */,
+				B071825C27F0C18400C9BCE7 /* ViewModel */,
+				B071825D27F0C19000C9BCE7 /* Service */,
 				B086C5E827EFE913003F94DE /* AppDelegate.swift */,
 				B086C5EA27EFE913003F94DE /* SceneDelegate.swift */,
 				B086C5EC27EFE913003F94DE /* ViewController.swift */,
@@ -260,7 +312,11 @@
 			files = (
 				B086C5ED27EFE913003F94DE /* ViewController.swift in Sources */,
 				B086C5E927EFE913003F94DE /* AppDelegate.swift in Sources */,
+				B071826027F0C98800C9BCE7 /* UserModel.swift in Sources */,
+				B071826227F0CD5B00C9BCE7 /* RepoModel.swift in Sources */,
+				B071826627F0D13B00C9BCE7 /* GitService.swift in Sources */,
 				B086C5EB27EFE913003F94DE /* SceneDelegate.swift in Sources */,
+				B071826427F0D00E00C9BCE7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
