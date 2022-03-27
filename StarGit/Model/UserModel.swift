@@ -11,7 +11,7 @@ struct UserModel: Codable {
     
     var avatarURL: String
     var username: String
-    var name: String
+    var name: String?
     var bio: String?
     var reposURL: String
     
@@ -21,6 +21,14 @@ struct UserModel: Codable {
         case name
         case bio
         case reposURL = "repos_url"
+    }
+    
+    init(avatarURL: String, username: String, reposURL: String) {
+        self.avatarURL = avatarURL
+        self.username = username
+        self.name = nil
+        self.bio = nil
+        self.reposURL = reposURL
     }
     
 }
