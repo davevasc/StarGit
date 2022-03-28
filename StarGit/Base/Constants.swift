@@ -20,3 +20,9 @@ enum APIConstants {
 //    static let x = "https://api.github.com/search/users?q=dave+in:login&per_page=2"
    
 }
+
+enum APIErrors: String, Error {
+    case getUser = "Error getting user from API"
+    case getUsersList = "Error getting users list from API"
+    case getUserReposList = "Error getting user repos list from API"
+}

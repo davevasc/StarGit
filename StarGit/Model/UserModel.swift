@@ -32,3 +32,19 @@ struct UserModel: Codable {
     }
     
 }
+
+struct UserListModel: Codable {
+    var users: [UserModel]
+    
+    enum CodingKeys: String, CodingKey {
+        case users = "items"
+    }
+    
+    init() {
+        self.users = []
+    }
+    
+}
+    
+    
+

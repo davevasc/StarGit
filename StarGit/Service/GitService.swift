@@ -9,31 +9,46 @@ import Foundation
 
 protocol GitService {
     func getGitUser(user: String) async throws -> UserModel
-    func getGitUsersList(text: String) async throws -> [UserModel]
-    func getGitUserRepoList(user: String) async throws -> [RepoModel]
+    func getGitUsersList(text: String) async throws -> UserListModel
+    func getGitUserReposList(user: String) async throws -> [RepoModel]
 }
 
 final class GitServiceImpl: GitService {
     
     func getGitUser(user: String) async throws -> UserModel {
-        let urlSession = URLSession.shared
-        let url = URL(string: APIConstants.usersURL.appending(user))
-        let (data, _) = try await urlSession.data(from: url!)
-        return try JSONDecoder().decode(UserModel.self, from: data)
+        do {
+            let urlSession = URLSession.shared
+            let url = URL(string: APIConstants.usersURL.appending(user))
+            let (data, _) = try await urlSession.data(from: url!)
+            return try JSONDecoder().decode(UserModel.self, from: data)
+        }
+        catch {
+            throw APIErrors.getUser
+        }
     }
     
-    func getGitUsersList(text: String) async throws -> [UserModel] {
-        let urlSession = URLSession.shared
-        let url = URL(string: APIConstants.searchUsersURL.appending(text + APIConstants.queryUsername + APIConstants.queryResults))
-        let (data, _) = try await urlSession.data(from: url!)
-        return try JSONDecoder().decode([UserModel].self, from: data)
+    func getGitUsersList(text: String) async throws -> UserListModel {
+        do {
+            let urlSession = URLSession.shared
+            let url = URL(string: APIConstants.searchUsersURL.appending(text + APIConstants.queryUsername + APIConstants.queryResults))
+            let (data, _) = try await urlSession.data(from: url!)
+            return try JSONDecoder().decode(UserListModel.self, from: data)
+        }
+        catch {
+            throw APIErrors.getUsersList
+        }
     }
     
-    func getGitUserRepoList(user: String) async throws -> [RepoModel] {
-        let urlSession = URLSession.shared
-        let url = URL(string: APIConstants.usersURL.appending(user + APIConstants.repoDIR))
-        let (data, _) = try await urlSession.data(from: url!)
-        return try JSONDecoder().decode([RepoModel].self, from: data)
+    func getGitUserReposList(user: String) async throws -> [RepoModel] {
+        do {
+            let urlSession = URLSession.shared
+            let url = URL(string: APIConstants.usersURL.appending(user + APIConstants.repoDIR))
+            let (data, _) = try await urlSession.data(from: url!)
+            return try JSONDecoder().decode([RepoModel].self, from: data)
+        }
+        catch {
+            throw APIErrors.getUserReposList
+        }
     }
     
 }
