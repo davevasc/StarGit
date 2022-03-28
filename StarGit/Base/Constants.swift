@@ -22,6 +22,8 @@ enum APIConstants {
 }
 
 enum APIErrors: String, Error {
+    case invalidURL = "Error processing URL"
+    case emptyUser = "Empty User for search"
     case getUser = "Error getting user from API"
     case getUsersList = "Error getting users list from API"
     case getUserReposList = "Error getting user repos list from API"

@@ -25,10 +25,10 @@ final class GitViewModel {
         }
     }
     
-    func getUsersList(text: String) async -> Result<UserListModel, Error> {
+    func getUsersList(text: String) async -> Result<[UserModel], Error> {
         do {
             let usersList = try await self.service.getGitUsersList(text: text)
-            return .success(usersList)
+            return .success(usersList.users)
         }
         catch {
             return .failure(error)

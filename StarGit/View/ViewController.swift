@@ -7,29 +7,32 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var labelName: UILabel!
     
-    @IBOutlet weak var suscribeButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     
-    private var userListModel: UserListModel
+    private let vm = GitViewModel()
+    private var users: [UserModel] = []
     
     
 //    private var vm: GitViewModel
-    private var vm = GitViewModel()
+    
     
 //    init(vm: GitViewModel = GitViewModel()) {
 //        self.vm = vm
 //        //self.userListModel = UserListModel()
 //    }
 
-    init() {
-        self.userListModel = UserListModel()
-    }
+//    init() {
+//        self.userListModel = UserListModel()
+//    }
 //    required init?(coder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
@@ -41,20 +44,13 @@ class ViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         labelName.textColor = .blue
-        suscribeButton.setTitle("Nuevo Titulo ya!", for: .normal)
         
-        Task {
-            let result = await vm.getUsersList(text: "dave")
-            switch result {
-            case .success (let userList):
-                self.userListModel = userList
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure (let error):
-                print(error)
-            }
-        }
+        
+        //Button
+        searchButton.configuration?.baseForegroundColor = .systemBlue
+        searchButton.configuration?.image = UIImage(systemName: "magnifyingglass.circle.fill")
+//        searchButton.setTitle("Busca Usuarios!", for: .normal)
+        
     }
     
 //    // ejecuta antes de que la vista aparezca
@@ -69,25 +65,48 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     
     @IBAction func didTapOn(_ sender: Any) {
-        print("se ha suscrito bien!")
+        
+        self.tableView.dataSource = self
+        
+        Task {
+                let result = await vm.getUsersList(text: textField.text ?? "dave")
+                switch result {
+                case .success (let users):
+                    self.users = users
+                    print(self.users)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure (let error):
+                    print("AAA: ESCRIBIMOS EL ERROR:")
+                    print(error)
+                }
+            }
+        
+        
     }
     
     
-    // En ViewModel
- 
+  
     
+    
+   
+
+    
+
+}
+
+extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.userListModel.users.count
+        return self.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.userListModel.users[indexPath.row].username
+        cell.textLabel?.text = self.users[indexPath.row].username
         return cell
     }
-
     
-
 }
 
