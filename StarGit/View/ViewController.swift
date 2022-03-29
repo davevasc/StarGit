@@ -69,19 +69,17 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
         
         Task {
-                let result = await vm.getUsersList(text: textField.text ?? "dave")
-                switch result {
-                case .success (let users):
-                    self.users = users
-                    print(self.users)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                case .failure (let error):
-                    print("AAA: ESCRIBIMOS EL ERROR:")
-                    print(error)
+            let result = await vm.getUsersList(text: textField.text ?? "")
+            switch result {
+            case .success (let users):
+                self.users = users
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
+            case .failure (let error):
+                print(error)
             }
+        }
         
         
     }

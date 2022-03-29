@@ -15,15 +15,14 @@ enum APIConstants {
     static let queryUsername = "+in:login"
     static let queryResults = "&per_page=" + String(APIConstants.maxResults)
     static let maxResults = 5
-    
-    
-//    static let x = "https://api.github.com/search/users?q=dave+in:login&per_page=2"
-   
+}
+
+enum URLErrors: String, Error {
+    case invalidURL = "Error processing URL"
+    case emptyUser = "Empty User for search"
 }
 
 enum APIErrors: String, Error {
-    case invalidURL = "Error processing URL"
-    case emptyUser = "Empty User for search"
     case getUser = "Error getting user from API"
     case getUsersList = "Error getting users list from API"
     case getUserReposList = "Error getting user repos list from API"
