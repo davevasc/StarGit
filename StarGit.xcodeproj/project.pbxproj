@@ -14,13 +14,18 @@
 		B071826627F0D13B00C9BCE7 /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071826527F0D13B00C9BCE7 /* GitService.swift */; };
 		B086C5E927EFE913003F94DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5E827EFE913003F94DE /* AppDelegate.swift */; };
 		B086C5EB27EFE913003F94DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5EA27EFE913003F94DE /* SceneDelegate.swift */; };
-		B086C5ED27EFE913003F94DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5EC27EFE913003F94DE /* ViewController.swift */; };
+		B086C5ED27EFE913003F94DE /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5EC27EFE913003F94DE /* UserListView.swift */; };
 		B086C5F027EFE913003F94DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B086C5EE27EFE913003F94DE /* Main.storyboard */; };
 		B086C5F227EFE915003F94DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B086C5F127EFE915003F94DE /* Assets.xcassets */; };
 		B086C5F527EFE915003F94DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B086C5F327EFE915003F94DE /* LaunchScreen.storyboard */; };
 		B086C60027EFE916003F94DE /* StarGitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C5FF27EFE916003F94DE /* StarGitTests.swift */; };
 		B086C60A27EFE916003F94DE /* StarGitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C60927EFE916003F94DE /* StarGitUITests.swift */; };
 		B086C60C27EFE916003F94DE /* StarGitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B086C60B27EFE916003F94DE /* StarGitUITestsLaunchTests.swift */; };
+		B0B5FC8C27F4874800EA18EF /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5FC8B27F4874800EA18EF /* UserDetailView.swift */; };
+		B0B5FC8E27F48AF300EA18EF /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5FC8D27F48AF300EA18EF /* UserCell.swift */; };
+		B0B5FC9027F48B0300EA18EF /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5FC8F27F48B0300EA18EF /* RepoCell.swift */; };
+		B0B5FC9227F4C48D00EA18EF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5FC9127F4C48D00EA18EF /* Utils.swift */; };
+		B0B5FC9427F527F500EA18EF /* RepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B5FC9327F527F500EA18EF /* RepoListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,7 @@
 		B086C5E527EFE913003F94DE /* StarGit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarGit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B086C5E827EFE913003F94DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B086C5EA27EFE913003F94DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B086C5EC27EFE913003F94DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B086C5EC27EFE913003F94DE /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		B086C5EF27EFE913003F94DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B086C5F127EFE915003F94DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B086C5F427EFE915003F94DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +64,11 @@
 		B086C60527EFE916003F94DE /* StarGitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarGitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B086C60927EFE916003F94DE /* StarGitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarGitUITests.swift; sourceTree = "<group>"; };
 		B086C60B27EFE916003F94DE /* StarGitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarGitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B0B5FC8B27F4874800EA18EF /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		B0B5FC8D27F48AF300EA18EF /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		B0B5FC8F27F48B0300EA18EF /* RepoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
+		B0B5FC9127F4C48D00EA18EF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B0B5FC9327F527F500EA18EF /* RepoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B071826327F0D00E00C9BCE7 /* Constants.swift */,
+				B0B5FC9127F4C48D00EA18EF /* Utils.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -97,7 +108,11 @@
 		B071825B27F0C17E00C9BCE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B086C5EC27EFE913003F94DE /* ViewController.swift */,
+				B086C5EC27EFE913003F94DE /* UserListView.swift */,
+				B0B5FC8B27F4874800EA18EF /* UserDetailView.swift */,
+				B0B5FC8D27F48AF300EA18EF /* UserCell.swift */,
+				B0B5FC8F27F48B0300EA18EF /* RepoCell.swift */,
+				B0B5FC9327F527F500EA18EF /* RepoListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,14 +328,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B086C5ED27EFE913003F94DE /* ViewController.swift in Sources */,
+				B086C5ED27EFE913003F94DE /* UserListView.swift in Sources */,
 				B086C5E927EFE913003F94DE /* AppDelegate.swift in Sources */,
 				B071826027F0C98800C9BCE7 /* UserModel.swift in Sources */,
 				B071826227F0CD5B00C9BCE7 /* RepoModel.swift in Sources */,
+				B0B5FC8C27F4874800EA18EF /* UserDetailView.swift in Sources */,
 				B071826627F0D13B00C9BCE7 /* GitService.swift in Sources */,
 				B05F7DE027F1DD2100F1AB59 /* GitViewModel.swift in Sources */,
 				B086C5EB27EFE913003F94DE /* SceneDelegate.swift in Sources */,
+				B0B5FC8E27F48AF300EA18EF /* UserCell.swift in Sources */,
+				B0B5FC9027F48B0300EA18EF /* RepoCell.swift in Sources */,
 				B071826427F0D00E00C9BCE7 /* Constants.swift in Sources */,
+				B0B5FC9427F527F500EA18EF /* RepoListView.swift in Sources */,
+				B0B5FC9227F4C48D00EA18EF /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

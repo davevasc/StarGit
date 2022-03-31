@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserListView: UIViewController {
     
     
+
     @IBOutlet weak var labelName: UILabel!
-    
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
-    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -43,6 +42,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup table
+        tableView.estimatedRowHeight = 30
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        
         labelName.textColor = .blue
         
         
@@ -67,6 +71,8 @@ class ViewController: UIViewController {
     @IBAction func didTapOn(_ sender: Any) {
         
         self.tableView.dataSource = self
+        self.tableView.layer.cornerRadius = 10
+
         
         Task {
             let result = await vm.getUsersList(text: textField.text ?? "")
@@ -86,7 +92,17 @@ class ViewController: UIViewController {
     
     
   
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueToUserDetailView" {
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let user = users[row]
+                
+                if let destinationViewController = segue.destination as? UserDetailView {
+                    destinationViewController.user = user
+                }
+            }
+        }
+    }
     
    
 
@@ -94,17 +110,21 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDataSource {
+extension UserListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.users[indexPath.row].username
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else {
+            fatalError("UserCell is not available")
+        }
+        let user = users[indexPath.row]
+        cell.configure(Avatar: user.avatarURL, Username: user.username, TextColor: .systemBlue, BackgroundColor: .gray)
         return cell
     }
+    
     
 }
 
