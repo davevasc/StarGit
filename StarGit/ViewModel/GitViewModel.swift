@@ -9,12 +9,15 @@ import Foundation
 
 final class GitViewModel {
     
+    // MARK: - Internal vars
     private let service: GitService
     
+    // MARK: - Initialization
     init(service: GitService = GitServiceImpl()) {
         self.service = service
     }
     
+    // MARK: - External functions (for Views)
     func getUser(user: String) async -> Result<UserModel, Error> {
         do {
             let user = try await self.service.getGitUser(user: user)

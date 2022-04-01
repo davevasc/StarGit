@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Custom Utilities
 class Utils {
     static func show(Message message: String, WithTitle title: String, InViewController viewController: UIViewController) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -16,6 +17,7 @@ class Utils {
     }
 }
 
+// MARK: - Help for load URL image async
 extension UIImageView {
     func load(url: URL) {
         //GCD background thread
@@ -32,10 +34,9 @@ extension UIImageView {
     }
 }
 
+// MARK: - Custom Colors
 extension UIColor {
-
     @objc func soft(by alpha: CGFloat = 0.2) -> UIColor {
         return self.withAlphaComponent(alpha)
     }
-
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Protocol declaration
 protocol GitService {
     func getGitUser(user: String) async throws -> UserModel
     func getGitUsersList(text: String) async throws -> UserListModel
@@ -15,6 +16,7 @@ protocol GitService {
 
 final class GitServiceImpl: GitService {
     
+    // MARK: - External functions (for ViewModel)
     func getGitUser(user: String) async throws -> UserModel {
         let urlSession = URLSession.shared
         guard !user.isEmpty else {
