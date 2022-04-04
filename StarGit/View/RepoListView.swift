@@ -39,7 +39,8 @@ class RepoListView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var reposLabel: UILabel = {
+    /** Updated 03-04-2022 */
+    private var reposLabel: UILabel = { // lazy
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .natural
@@ -58,7 +59,8 @@ class RepoListView: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    private lazy var indicatorView: UIActivityIndicatorView = {
+    /** Updated 03-04-2022 */
+    private var indicatorView: UIActivityIndicatorView = { // lazy
         let view = UIActivityIndicatorView(style: .large)
         view.color = .systemPurple
         view.startAnimating()
@@ -90,7 +92,8 @@ class RepoListView: UIViewController {
                     self.tableView.reloadData()
                 }
             case .failure (let error):
-                print(error)
+                /** Updated 03-04-2022 */
+                print(error.localizedDescription) // print(error)
             }
         }
     }

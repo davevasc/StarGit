@@ -59,7 +59,7 @@ class RepoCell: UITableViewCell {
         return label
     }()
     private lazy var stack: UIStackView = {
-       let stk = UIStackView(arrangedSubviews: [nameLabel, fullNameLabel, repoUrlLabel, languageLabel, descriptionLabel])
+        let stk = UIStackView(arrangedSubviews: [self.nameLabel, self.fullNameLabel, self.repoUrlLabel, self.languageLabel, descriptionLabel])
         stk.translatesAutoresizingMaskIntoConstraints = false
         stk.axis = .vertical
         return stk

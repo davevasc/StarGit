@@ -7,32 +7,48 @@
 
 import Foundation
 import UIKit
+/** Updated 03-04-2022 */
+import Kingfisher
 
 // MARK: - Custom Utilities
-class Utils {
-    static func show(Message message: String, WithTitle title: String, InViewController viewController: UIViewController) {
+/** Updated 03-04-2022 */
+extension UIViewController {
+    func show(Title title: String, Message message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        viewController.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
+//class Utils {
+//    static func show(Message message: String, WithTitle title: String, InViewController viewController: UIViewController) {
+//        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+//        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//        viewController.present(alertController, animated: true, completion: nil)
+//    }
+//}
 
 // MARK: - Help for load URL image async
+/** Updated 03-04-2022 */
 extension UIImageView {
     func load(url: URL) {
-        //GCD background thread
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    // Load image in the main thread
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+        self.kf.setImage(with: url)
     }
 }
+//extension UIImageView {
+//    func load(url: URL) {
+//        //GCD background thread
+//        DispatchQueue.global().async { [weak self] in
+//            if let data = try? Data(contentsOf: url) {
+//                if let image = UIImage(data: data) {
+//                    // Load image in the main thread
+//                    DispatchQueue.main.async {
+//                        self?.image = image
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 // MARK: - Custom Colors
 extension UIColor {

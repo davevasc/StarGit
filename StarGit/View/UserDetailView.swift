@@ -28,7 +28,8 @@ class UserDetailView: UIViewController {
         avatar.translatesAutoresizingMaskIntoConstraints = false
         return avatar
     }()
-    private lazy var usernameLabel: UILabel = {
+    /** Updated 03-04-2022 */
+    private var usernameLabel: UILabel = { // lazy
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .center
@@ -38,7 +39,8 @@ class UserDetailView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var nameLabel: UILabel = {
+    /** Updated 03-04-2022 */
+    private var nameLabel: UILabel = { // lazy
         let label = UILabel()
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -48,7 +50,8 @@ class UserDetailView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var bioLabel: UILabel = {
+    /** Updated 03-04-2022 */
+    private var bioLabel: UILabel = { // lazy
         let label = UILabel()
         label.numberOfLines = 6
         label.textAlignment = .natural
@@ -64,15 +67,17 @@ class UserDetailView: UIViewController {
         configuration.subtitle = "Muestra los repos del perfil seleccionado"
         configuration.imagePadding = 12
         configuration.cornerStyle = .capsule
-        let buttonAction = UIAction { _ in
-            self.performSegue(withIdentifier: "SegueToRepoListView", sender: self)
+        /** Updated 03-04-2022 */
+        let buttonAction = UIAction { [weak self] _ in                              // let buttonAction = UIAction { _ in
+            self?.performSegue(withIdentifier: "SegueToRepoListView", sender: self) //self.performSegue(withIdentifier: "SegueToRepoListView", sender: self)
         }
         let button = UIButton(type: .system, primaryAction: buttonAction)
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    private lazy var indicatorView: UIActivityIndicatorView = {
+    /** Updated 03-04-2022 */
+    private var indicatorView: UIActivityIndicatorView = { // lazy
         let view = UIActivityIndicatorView(style: .large)
         view.color = .systemPurple
         view.startAnimating()
@@ -104,7 +109,8 @@ class UserDetailView: UIViewController {
                     self.setData()
                 }
             case .failure (let error):
-                print(error)
+                /** Updated 03-04-2022 */
+                print(error.localizedDescription) // print(error)
             }
         }
     }

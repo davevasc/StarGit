@@ -14,7 +14,8 @@ class UserListView: UIViewController {
     private let vm = GitViewModel()
     
     // MARK: - UI Elements
-    private lazy var logoLabel: UILabel = {
+    /** Updated 03-04-2022 */
+    private var logoLabel: UILabel = { // lazy
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .center
@@ -24,7 +25,8 @@ class UserListView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var searchField: UITextField = {
+    /** Updated 03-04-2022 */
+    private var searchField: UITextField = { // lazy
         let field = UITextField()
         field.textAlignment = .natural
         field.text = ""
@@ -43,8 +45,9 @@ class UserListView: UIViewController {
           withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         configuration.cornerStyle = .capsule
         configuration.imagePadding = 12
-        let buttonAction = UIAction { _ in
-            self.getUsersAndReloadData()
+        /** Updated 03-04-2022 */
+        let buttonAction = UIAction { [weak self] _ in  // let buttonAction = UIAction { _ in
+            self?.getUsersAndReloadData()               // self?.getUsersAndReloadData()
         }
         let button = UIButton(type: .system, primaryAction: buttonAction)
         button.configuration = configuration
@@ -56,12 +59,15 @@ class UserListView: UIViewController {
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
-        table.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
+        /** Updated 03-04-2022 */
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "UserCell")
+//        table.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
         table.layer.cornerRadius = 12
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    private lazy var indicatorView: UIActivityIndicatorView = {
+    /** Updated 03-04-2022 */
+    private var indicatorView: UIActivityIndicatorView = { // lazy
         let view = UIActivityIndicatorView(style: .large)
         view.color = .systemPurple
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +91,9 @@ class UserListView: UIViewController {
             indicatorView.startAnimating()
             guard searchField.text != "" else {
                 self.indicatorView.stopAnimating()
-                Utils.show(Message: "Introduce un texto", WithTitle: "Alerta", InViewController: self)
+                /** Updated 03-04-2022 */
+                self.show(Title: "Alerta", Message: "Introduce un texto")
+                //Utils.show(Message: "Introduce un texto", WithTitle: "Alerta", InViewController: self)
                 return
             }
             if let text = searchField.text?.replacingOccurrences(of: " ", with: "") {
@@ -95,7 +103,9 @@ class UserListView: UIViewController {
                     self.users = users
                     if self.users.isEmpty {
                         self.indicatorView.stopAnimating()
-                        Utils.show(Message: "Sin resultados", WithTitle: "Alerta", InViewController: self)
+                        /** Updated 03-04-2022 */
+                        self.show(Title: "Alerta", Message: "Sin resultados")
+                        //Utils.show(Message: "Sin resultados", WithTitle: "Alerta", InViewController: self)
                     } else {
                         DispatchQueue.main.async {
                             self.indicatorView.stopAnimating()
@@ -103,7 +113,8 @@ class UserListView: UIViewController {
                         }
                     }
                 case .failure (let error):
-                    print(error)
+                    /** Updated 03-04-2022 */
+                    print(error.localizedDescription) // print(error)
                 }
             }
         }
@@ -158,11 +169,42 @@ extension UserListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as? UserCell else {
-            fatalError("\(UserCell.identifier) is not available")
+        /** Updated 03-04-2022 */
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as UITableViewCell? else {
+            fatalError("UserCell is not available")
         }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as? UserCell else {
+//            fatalError("\(UserCell.identifier) is not available")
+//        }
+        
+        // Obtenemos los datos de la celda
         let user = users[indexPath.row]
-        cell.configure(Avatar: user.avatarURL, Username: user.username, TextColor: .systemBlue, BackgroundColor: .systemTeal)
+        
+        /** Updated 03-04-2022 */
+        // Content
+        var content = cell.defaultContentConfiguration()
+        content.text = user.username
+        content.textProperties.color = .systemBlue
+        if let font = UIFont(name: "Arial Rounded MT Bold", size: 22) {
+            content.textProperties.font = font
+        }
+        let image = UIImageView()
+        image.image = UIImage(named:"EmptyProfile.png")
+        if let url = URL(string: user.avatarURL) {
+            image.load(url: url)
+        }
+        content.image = image.image
+        content.imageProperties.cornerRadius = 10
+        content.imageProperties.maximumSize = CGSize(width: Int(view.bounds.width / 10), height: Int(view.bounds.width / 10))
+        cell.contentConfiguration = content
+        
+        /** Updated 03-04-2022 */
+        // Background
+        var background = cell.backgroundConfiguration
+        background?.backgroundColor = .systemTeal.soft()
+        cell.backgroundConfiguration = background
+        
+//        cell.configure(Avatar: user.avatarURL, Username: user.username, TextColor: .systemBlue, BackgroundColor: .systemTeal)
         return cell
     }
     
